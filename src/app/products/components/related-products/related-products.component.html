@@ -1,1 +1,19 @@
-<p>related-products works!</p>
+
+<h2>Related Products</h2>
+<ng-container *ngIf="products$ | async as products; else loadingTemplate">
+    <div class="d-flex flex-column p-2" *ngIf="products.length > 0; else noRecordsTemplate">
+      <app-product-card class="card m-1" style="width: 18rem" *ngFor="let item of products" [product]="item"></app-product-card>
+</div>
+  <!-- <ul *ngIf="products.length > 0; else noRecordsTemplate">
+    <li *ngFor="let item of products">
+      {{item.name}}
+    </li>
+  </ul> -->
+</ng-container>
+<ng-template #loadingTemplate>
+  <p > Please wait while we get that</p>
+</ng-template>
+
+<ng-template #noRecordsTemplate>
+  <p > We don't have any matches</p>
+</ng-template>

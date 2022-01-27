@@ -11,9 +11,9 @@ import { StateService } from 'src/app/services/state.service';
 export class ListComponent implements OnInit {
   public products$: Observable<Product[]>;
 
-  constructor(private stateService: StateService) {
+  constructor(private stateService: StateService) {}
+
+  ngOnInit() {
     this.products$ = this.stateService.getProducts();
   }
-
-  ngOnInit() {}
 }

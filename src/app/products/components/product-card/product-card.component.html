@@ -1,0 +1,14 @@
+  <img [src]="product.imageUrl" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p class="card-text">
+      {{ product.description }}
+    </p>
+
+    <a [routerLink]="['/products/', product.id]" class="card-link"
+      >View Detail</a
+    >
+  </div>
+  <div class="card-footer text-muted">
+    {{ product.price.amount | currency: product.price.base }}
+  </div>

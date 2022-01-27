@@ -3,7 +3,7 @@ import { StateService } from './services/state.service';
 
 @Component({
   selector: 'app-root',
-  template: '<app-layout><router-outlet></router-outlet><app-layout>',
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
   title = 'xyz-clothing';
