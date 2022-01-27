@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
-import { CurrencyPickerComponent } from './currency-picker/currency-picker.component';
+import { NgModule } from '@angular/core';
 import { CustomCurrencyPipe } from './custom-currency.pipe';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [CurrencyPickerComponent, CustomCurrencyPipe],
+  declarations: [CustomCurrencyPipe],
   exports: [CustomCurrencyPipe],
   providers: [CurrencyPipe],
 })
