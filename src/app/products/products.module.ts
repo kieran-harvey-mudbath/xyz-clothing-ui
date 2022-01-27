@@ -5,17 +5,20 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { ListComponent } from './views/list/list.component';
 import { DetailComponent } from './views/detail/detail.component';
 import { RelatedProductsComponent } from './components/related-products/related-products.component';
-
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
+    //
     ListComponent,
     DetailComponent,
-    RelatedProductsComponent
+    RelatedProductsComponent,
   ],
   imports: [
+    //
     CommonModule,
-    ProductsRoutingModule
-  ]
+    ProductsRoutingModule,
+    SharedModule,
+  ],
 })
-export class ProductsModule { }
+export class ProductsModule {}
