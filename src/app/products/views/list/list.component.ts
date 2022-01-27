@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from 'src/app/services/products.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
+  constructor(private productsService: ProductsService) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  async ngOnInit() {
+    const products = await firstValueFrom(this.productsService.getProducts());
+    console.log(products);
   }
-
 }
