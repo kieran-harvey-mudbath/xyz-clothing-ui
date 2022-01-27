@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Currency } from 'src/app/models/currency';
 import { Product } from 'src/app/models/product';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-product-card',
@@ -8,7 +11,11 @@ import { Product } from 'src/app/models/product';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product: Product;
-  constructor() {}
+  public currency$: Observable<Currency>;
 
-  ngOnInit(): void {}
+  constructor(private stateService: StateService) {}
+
+  ngOnInit(): void {
+    this.currency$ = this.stateService.getActiveCurrency();
+  }
 }

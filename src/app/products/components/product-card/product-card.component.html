@@ -9,6 +9,6 @@
       >View Detail</a
     >
   </div>
-  <div class="card-footer text-muted">
-    {{ product.price | customCurrency: "USD"  }}
+  <div class="card-footer text-muted" *ngIf="currency$ | async as currency">
+    {{ product.price | customCurrency: currency  }}
   </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, filter, map, Observable, switchMap, tap } from 'rxjs';
+import { Currency } from 'src/app/models/currency';
 import { Product } from 'src/app/models/product';
 import { StateService } from 'src/app/services/state.service';
 
@@ -11,6 +12,7 @@ import { StateService } from 'src/app/services/state.service';
 })
 export class DetailComponent implements OnInit {
   public product$: Observable<Product>;
+  public currency$: Observable<Currency>;
 
   constructor(
     private stateService: StateService,
@@ -19,6 +21,8 @@ export class DetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.currency$ = this.stateService.getActiveCurrency();
+
     this.product$ = combineLatest({
       params: this.route.params,
       products: this.stateService.getProducts(),

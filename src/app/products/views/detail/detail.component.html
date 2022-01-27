@@ -18,8 +18,8 @@
 
 
             </div>
-            <div class="card-footer text-muted">
-              {{ product.price.amount | currency: product.price.base }}
+            <div class="card-footer text-muted" *ngIf="currency$ | async as currency">
+    {{ product.price | customCurrency: currency  }}
             </div>
           </div>
         </div>
