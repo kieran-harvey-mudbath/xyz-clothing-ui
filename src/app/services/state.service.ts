@@ -6,6 +6,7 @@ import {
   map,
   Observable,
 } from 'rxjs';
+import { Currency } from '../models/currency';
 import { Product } from '../models/product';
 import { ProductsService } from './products.service';
 
@@ -15,6 +16,7 @@ import { ProductsService } from './products.service';
 export class StateService {
   private subject = new BehaviorSubject<SimpleSate>({
     products: [],
+    activeCurrency: 'AUD',
   });
   constructor(private productsService: ProductsService) {}
 
@@ -72,9 +74,23 @@ export class StateService {
       distinctUntilChanged()
     );
   }
+
+  public getActiveCurrency(): Observable<Currency> {
+    return this.subject.pipe(
+      map((x) => x.activeCurrency),
+      distinctUntilChanged()
+    );
+  }
+
+  public setActiveCurrency(value: Currency): void {
+    const state = { ...this.subject.getValue() };
+    state.activeCurrency = value;
+    this.subject.next(state);
+  }
 }
 
 interface SimpleSate {
   products: Product[];
   activeProduct?: Product;
+  activeCurrency: Currency;
 }

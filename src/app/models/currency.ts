@@ -1,1 +1,1 @@
-export type Currency = 'AUD' | 'USD';
+export type Currency = 'AUD' | 'USD' | 'CNY';

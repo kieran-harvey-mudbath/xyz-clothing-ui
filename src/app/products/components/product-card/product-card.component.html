@@ -10,5 +10,5 @@
     >
   </div>
   <div class="card-footer text-muted">
-    {{ product.price.amount | currency: product.price.base }}
+    {{ product.price | customCurrency: "USD"  }}
   </div>
