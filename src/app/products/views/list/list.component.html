@@ -1,1 +1,16 @@
-<p>list works!</p>
+
+<ng-container *ngIf="products$ | async as products; else loadingTemplate">
+
+  <ul *ngIf="products.length > 0; else noRecordsTemplate">
+    <li *ngFor="let item of products">
+      {{item.name}}
+    </li>
+  </ul>
+</ng-container>
+<ng-template #loadingTemplate>
+  <p > Please wait while we get that</p>
+</ng-template>
+
+<ng-template #noRecordsTemplate>
+  <p > We don't have any matches</p>
+</ng-template>

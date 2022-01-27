@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from 'src/app/services/products.service';
-import { firstValueFrom } from 'rxjs';
+import { Observable } from 'rxjs';
+import { Product } from 'src/app/models/product';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-list',
@@ -8,10 +9,11 @@ import { firstValueFrom } from 'rxjs';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  constructor(private productsService: ProductsService) {}
+  public products$: Observable<Product[]>;
 
-  async ngOnInit() {
-    const products = await firstValueFrom(this.productsService.getProducts());
-    console.log(products);
+  constructor(private stateService: StateService) {
+    this.products$ = this.stateService.getProducts();
   }
+
+  ngOnInit() {}
 }
