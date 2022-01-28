@@ -16,10 +16,10 @@
                 {{ product.description }}
               </p>
 
+              <a [routerLink]="['/products', product.id, 'edit']">Edit</a>
 
             </div>
-            <div class="card-footer text-muted" *ngIf="currency$ | async as currency">
-    {{ product.price | customCurrency: currency  }}
+            <div class="card-footer text-muted" *ngIf="currency$ | async as currency">{{ product.price | customCurrency: currency  }}
             </div>
           </div>
         </div>
