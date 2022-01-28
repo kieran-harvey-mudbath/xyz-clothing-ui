@@ -37,14 +37,14 @@ import { StateService } from './services/state.service';
       deps: [StateService, ProductsService, ExchangeService],
       multi: true,
     },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: (stateService: StateService) => () => {
-        return stateService.updateProductsFromServer();
-      },
-      deps: [StateService, ProductsService, ExchangeService],
-      multi: true,
-    },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: (stateService: StateService) => () => {
+    //     return stateService.updateProductsFromServer();
+    //   },
+    //   deps: [StateService, ProductsService, ExchangeService],
+    //   multi: true,
+    // },
   ],
   bootstrap: [AppComponent],
 })
