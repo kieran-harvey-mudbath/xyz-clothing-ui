@@ -111,6 +111,17 @@ export class StateService {
     state.activeCurrency = value;
     this.subject.next(state);
   }
+
+  public updateProduct(id: number, product: Product) {
+    const products = [...this.subject.getValue().products];
+    const index = products.findIndex((x) => x.id === id);
+    if (index === -1) throw new Error('Could not find the product');
+
+    products[index] = product;
+    const state = { ...this.subject.getValue() };
+    state.products = products;
+    this.subject.next(state);
+  }
 }
 
 interface SimpleSate {

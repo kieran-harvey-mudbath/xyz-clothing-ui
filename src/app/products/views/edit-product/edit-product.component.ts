@@ -15,6 +15,7 @@ export class EditProductComponent implements OnInit {
   public form: FormGroup;
   public product$: Observable<Product>;
   public rates$: Observable<ExchangeRates[]>;
+  private productId: number;
 
   constructor(
     private fb: FormBuilder,
@@ -55,6 +56,7 @@ export class EditProductComponent implements OnInit {
         return product as Product;
       }),
       tap((product) => {
+        this.productId = product.id;
         this.form.get('description')?.patchValue(product.description);
         this.form.get('id')?.patchValue(product.id);
         this.form.get('imageUrl')?.patchValue(product.imageUrl);
@@ -65,7 +67,12 @@ export class EditProductComponent implements OnInit {
     );
   }
 
-  submitForm(data: FormGroup) {
-    console.log(data);
+  submitForm(formData: FormGroup) {
+    console.log(formData.value);
+
+    if (formData.valid) {
+      this.stateService.updateProduct(this.productId, formData.value);
+      this.router.navigateByUrl(`/products/${this.productId}`);
+    }
   }
 }
