@@ -15,10 +15,8 @@
     </ul>
     <div ngbDropdown class="d-inline-block" *ngIf="currency$ | async as currency" >
       <button class="btn btn-dark" id="dropdownBasic1" ngbDropdownToggle>{{currency}}</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button ngbDropdownItem (click)="changeCurrency('AUD')">AUD</button>
-        <button ngbDropdownItem (click)="changeCurrency('USD')">USD</button>
-        <button ngbDropdownItem (click)="changeCurrency('CNY')">CNY</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngIf="rates$ | async as rates">
+        <button ngbDropdownItem *ngFor="let item of rates" (click)="changeCurrency(item.base)">{{item.base}}</button>
       </div>
     </div>
   </div>

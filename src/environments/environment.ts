@@ -2,10 +2,14 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { Currency } from 'src/app/models/currency';
+
 export const environment = {
   production: false,
+  defaultCurrency: 'AUD' as Currency,
   urls: {
     productsUrl: 'https://xyz-clothing-api.azurewebsites.net/v1/products',
+    ratesUrl: 'https://xyz-clothing-api.azurewebsites.net/v1/rates',
   },
 };
 
